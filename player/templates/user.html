@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet"  href="../static/css/bootstrap.css"/>
+        <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        #top{
+		    height: 100px;
+		    background-color: darkslategrey;
+        }
+        #bottom{
+		 	height: 50px;
+		 	width: 100%;
+			background-color: darkslategrey;
+		 	position: fixed;
+		 	bottom: 0;
+        }
+        .div_css{
+            width: 180px;
+            border: 3px solid darkslategrey;
+            border-radius: 10px;
+        }
+        .d2,.div_css{
+            margin-top: 20px;
+            margin-left: 20px;
+        }
+        .btn{
+            outline:0;
+            border:0;
+            margin-top:5px;
+            background-color: #417dff;
+            border-radius: 5px;
+        }
+
+    </style>
+
+		<script src="../static/js/jquery-slim.min.js"></script>
+		<script src="../static/js/popper.min.js"></script>
+		<script src="../static/js/bootstrap.js"></script>
+        <script src="../static/js/user_action.js"></script>
+        <script src="../static/js/jquery.js"></script>
+	</head>
+	<body>
+        <div id="top">
+            <table></table>
+            <p>
+                <img src="../static/img/EAlogo.png" style="width: 200px;height:120px">
+            </p>
+        </div>
+        <div class="container">
+            <h3 >My Team：</h3>
+            <input type="button" class="show" value="显示球员">
+            <div class="row">
+                <div class="col-9">
+                    <div class="row">
+
+                        <div class="col-4 out1">
+{#                            <div class="player border  border-dark mt-3" >#}
+{#                                &Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem, ex, similique! Cumque dolorum est ex fugit ipsum quidem reiciendis sapiente temporibus. Autem commodi dignissimos fuga itaque nihil quidem, ratione velit!#}
+{#                            </div>#}
+{#                            <div class="player border  border-dark mt-3">#}
+{#                                &Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aperiam autem distinctio doloremque eaque ex expedita illo iure magni odio perferendis quae qui quod sed sequi sit, unde ut, vitae.#}
+{#                            </div>#}
+{#                            <div class="player border  border-dark mt-3">#}
+{#                                &Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aperiam autem distinctio doloremque eaque ex expedita illo iure magni odio perferendis quae qui quod sed sequi sit, unde ut, vitae.#}
+{#                            </div>#}
+                        </div>
+                        <div class="col-4 out2">
+{#                            <div class="player border  border-dark mt-3" >#}
+{#                                &Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem, ex, similique! Cumque dolorum est ex fugit ipsum quidem reiciendis sapiente temporibus. Autem commodi dignissimos fuga itaque nihil quidem, ratione velit!#}
+{#                            </div>#}
+{#                            <div class="player border  border-dark mt-3">#}
+{#                                &Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aperiam autem distinctio doloremque eaque ex expedita illo iure magni odio perferendis quae qui quod sed sequi sit, unde ut, vitae.#}
+{#                            </div>#}
+{#                            <div class="player border  border-dark mt-3">#}
+{#                                &Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aperiam autem distinctio doloremque eaque ex expedita illo iure magni odio perferendis quae qui quod sed sequi sit, unde ut, vitae.#}
+{#                            </div>#}
+                        </div>
+                        <div class="col-4 out3">
+{#                            <div class="player border  border-dark mt-3" >#}
+{#                                &Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem, ex, similique! Cumque dolorum est ex fugit ipsum quidem reiciendis sapiente temporibus. Autem commodi dignissimos fuga itaque nihil quidem, ratione velit!#}
+{#                            </div>#}
+{#                            <div class="player border  border-dark mt-3">#}
+{#                                &Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aperiam autem distinctio doloremque eaque ex expedita illo iure magni odio perferendis quae qui quod sed sequi sit, unde ut, vitae.#}
+{#                            </div>#}
+{#                            <div class="player border  border-dark mt-3">#}
+{#                                &Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aperiam autem distinctio doloremque eaque ex expedita illo iure magni odio perferendis quae qui quod sed sequi sit, unde ut, vitae.#}
+{#                            </div>#}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="div_css">
+                    <img src="../static/img/headimg.jpg" width="83" height="83" id="pic" class="ml-5 mt-3" ><br>
+                   <p>Hello, {{ user_name }}</p>
+                     <hr style="height: 1px; background-color: darkslategrey;">
+                     <input id="add" ype="text" name="b" class="w-50" placeholder="输入id">
+                     <input type="button" class="addbtn" value="add" ><br>
+                     <input id="delete" ype="text" name="b" class="w-50" placeholder="输入id">
+                     <input type="button" class="debtn" value="delete"><br>
+                     <input id="select" ype="text" name="b" class="w-50" placeholder="输入id">
+                     <input type="button" class="select" value="查询球员"><br>
+{#                     <input type="button" class="tuijian" value="智能推荐"><br>#}
+                     <a href="AIselect/">
+                        <input type="button" class="recommend" value="查看各类顶尖选手"><br>
+                     </a>
+                    <br>
+                    </div>
+                    {#TODO:在智能推荐下面那个框中再来一个球员信息框 进行动态显示搜索出来的球员信息#}
+                    <div class="player border  border-dark mt-3">
+                        姓名：
+                        <span id="name" class="m-0 p-0"></span><br>
+                        国籍：
+                        <span id="nation" class="m-0 p-0"></span><br>
+                        位置：
+                        <span id="positon" class="m-0 p-0"></span><br>
+                        总分：
+                        <span id="overall" class="m-0 p-0"></span><br>
+                        年龄：
+                        <span id="age" class="m-0 p-0"></span><br>
+                        总进球数：
+                        <span id="hits" class="m-0 p-0"></span><br>
+                        潜力值：
+                        <span id="potential" class="m-0 p-0"></span><br>
+                        所属球队：
+                        <span id="team" class="m-0 p-0"></span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+{#        <div id="bottom"></div>#}
+	</body>
+</html>

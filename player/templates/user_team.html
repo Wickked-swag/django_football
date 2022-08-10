@@ -1,0 +1,76 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        #top{
+		    height: 100px;
+		    background-color: darkslategrey;
+        }
+        #bottom{
+		 	height: 50px;
+		 	width: 100%;
+			background-color: darkslategrey;
+		 	position: fixed;
+		 	bottom: 0;
+        }
+        .div_css{
+            width: 180px;
+            border: 3px solid darkslategrey;
+            border-radius: 10px;
+        }
+        .d2,.div_css{
+            margin-top: 20px;
+            margin-left: 20px;
+        }
+        .btn{
+            outline:0;
+            border:0;
+            margin-top:5px;
+            background-color: #417dff;
+            border-radius: 5px;
+        }
+    </style>
+    <script src="../static/js/jquery.js"></script>
+    <script src="../static/js/test.js"></script>
+</head>
+<body>
+    <div id="top">
+		<table></table>
+		<p>
+			<img src="../static/img/EAlogo.png" style="width: 200px;height:120px">
+		</p>
+    </div>
+
+       <div class="div_css">
+           <p>Hello, {{ user_name }}</p>
+            {% for player in players %}
+             <hr style="height: 1px; background-color: darkslategrey;">
+           <div>name: {{ player.name }}</div>
+           <div>nationality: {{ player.nationality }}</div>
+           <div>position: {{ player.position }}</div>
+           <div>overall: {{ player.overall }}</div>
+           <div>age: {{ player.age }}</div>
+           <div>hits: {{ player.hits }}</div>
+           <div>potential: {{ player.potential }}</div>
+           <div>team: {{ player.team }}</div>
+            <br>
+       </div>
+            {% endfor %}
+
+    <div class="d2">
+        <form>
+        <input id="num1" type="text" name="a"><br>
+        <input id="num2" ype="text" name="b"><br>
+        <input type="button" class="btn" value="submit" >
+        </form>
+        <span id="res" >res:</span>&nbsp;<span id='result'></span>
+    </div>
+    <div id="bottom"></div>
+</body>
+</html>

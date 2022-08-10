@@ -1,0 +1,38 @@
+"""django_football URL Configuration
+
+The `urlpatterns` list routes URLs to views. For more information please see:
+    https://docs.djangoproject.com/en/3.1/topics/http/urls/
+Examples:
+Function views
+    1. Add an import:  from my_app import views
+    2. Add a URL to urlpatterns:  path('', views.home, name='home')
+Class-based views
+    1. Add an import:  from other_app.views import Home
+    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
+Including another URLconf
+    1. Import the include() function: from django.urls import include, path
+    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+"""
+from django.views import static ##新增
+from django.conf import settings ##新增
+from django.conf.urls import url ##新增
+from django.contrib import admin
+from django.urls import path
+from player import views
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', views.index),
+    path('index', views.index , name='index'),
+    path('login',views.login , name='login'),
+    path('regist' , views.regist , name='regist'),
+    path('user/',views.users_team , name='users_team'),
+    path('user/add/', views.add , name = 'add'),
+    path('user/AIselect/' , views.AI , name='AI'),
+    path('user/delete/' , views.delete , name='delete'),
+    path('user/select/' , views.select , name='select'),
+    path('user/show/' , views.show , name='select'),
+
+    url(r'^static/(?P<path>.*)$', static.serve,
+      {'document_root': settings.STATIC_ROOT}, name='static'),
+]

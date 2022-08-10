@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body><DOCTYPE html>
+
+<html>
+
+	<head>
+
+	<meta charset="utf-8" />
+
+	<title>lunbo</title>
+
+
+  <script >
+		window.onload=function(){
+
+		var container=document.getElementById('container');
+
+		var list=document.getElementById('list');
+
+		var buttons=document.getElementById('buttons').getElementsByTagName('span');
+
+		var pre=document.getElementById('prev');
+
+		var next=document.getElementById('next');
+
+		var index=1;
+
+		var animated=false;
+
+		var timer;
+
+		function showButton(){
+
+		for(var i=0;i<buttons.length;i++){
+
+		if(buttons[i].className=='on'){
+
+		buttons[i].className='';
+
+		break;
+
+		}
+
+		 }
+
+		buttons[index-1].className="on";
+
+		}
+
+		function animate(offset){
+
+		animated=true;
+
+		 var newleft=parseInt(list.style.left)+offset;
+
+		 var time=300;//位移总时间
+
+		 var interval=10;//位移间隔时间
+
+		 var speed=offset/(time/interval);//每一次的位移量
+
+
+
+		 function go(){
+
+		 if((speed<0&&parseInt(list.style.left)>newleft)||(speed>0&&parseInt(list.style.                  left)<newleft)){
+
+		 list.style.left=parseInt(list.style.left)+speed+'px';
+
+		 setTimeout(go,interval);
+
+		 }
+
+		 else{
+
+		  animated=false;
+
+		  list.style.left=newleft+'px';
+
+		          if(newleft>-750){
+
+		     list.style.left=-3000+'px';
+
+		           }
+
+		         if(newleft<-3000){
+
+		     list.style.left=-750+'px';
+
+		          }
+
+		   }
+
+		  }
+
+		 go();
+
+		}
+
+		function play(){
+
+		timer=setInterval(function(){
+
+		next.onclick();
+
+		},3000);
+
+		}
+
+		function stop(){
+
+		clearInterval(timer);
+
+		}
+
+		next.onclick=function(){
+
+		if(index==5){
+
+		index=1;
+
+		}
+
+		else{
+
+		index+=1;
+
+		}
+
+		showButton();
+
+		if(animated==false){
+
+		animate(-750);
+
+		}
+
+		}
+
+		pre.onclick=function(){
+
+		if(index==1){
+
+		index=5;
+
+		}
+
+		else{
+
+		 index-=1;
+
+		}
+
+		showButton();
+
+		if(animated==false){
+
+		   animate(600);
+
+		 }
+
+		}
+
+
+
+		for(var i=0;i<buttons.length;i++){
+
+		buttons[i].onclick=function(){
+
+		if(this.className=='on'){
+
+		return;
+
+		 }
+
+		var myIndex=parseInt(this.getAttribute('index'));
+
+		var offset=-600*(myIndex-index);
+
+
+
+		index=myIndex;
+
+		showButton();
+
+		 if(animated==false){
+
+		animate(offset);
+
+		  }
+
+		  }
+
+		 }
+
+
+
+		 container.onmouseover=stop;
+
+		 container.onmouseout=play;
+
+		 play();
+
+		}
+   </script>
+
+	 <style type="text/css">
+	 	*{ margin:0px; text-decoration:none;}
+
+  body{}
+	#left{
+		width: 250px;
+		height: 400px;
+		/* border: #000000 solid; */
+		border-radius: 18px;
+		border-top:  #555555 solid;
+		border-bottom: #555555 solid;
+		background-color: #EBEBEB;
+		float: left;
+		margin-top: 50px;
+		margin-left: 60px;
+	}
+	#right{
+		width: 250px;
+		height: 400px;
+		/* border: #000000 solid; */
+		border-radius: 18px;
+		border-top:  #555555 solid;
+		border-bottom: #555555 solid;
+		background-color: #EBEBEB;
+		float: right;
+		margin-top: 50px;
+		margin-right: 60px;
+	}
+	#pic{
+		margin-left: 80px;
+		margin-top:80px ;
+	}
+	#log{
+		width: 180px;
+		margin: 35px auto;
+		border-radius: 16px;
+		background-color: mediumspringgreen;
+	}
+	#log:hover{
+		background-color:  springgreen;
+	}
+	#pp{
+		font-size: 18px;
+	}
+	#top{
+		height: 100px;
+		background-color: darkslategrey;
+	}
+	p {
+	    /* text-align: center; */
+	    font-size: 25px;
+	    color: #F8F8F8;
+	    font-family: fantasy;
+			margin: 20px 50px;
+	}
+
+	/* id选择器 */
+	/* #hr1 {
+	    background-color: cadetblue;
+	    height: 2px;
+	    width: 100%;
+	}
+	 */
+  #container{
+		width:750px;
+		height:400px;
+		position:relative;
+		border:2px solid #555555;
+		border-radius: 10px;
+		overflow: hidden;
+		margin:50px auto;
+
+	}
+	.as{
+		color: #252525;
+		font-size: 20px;
+		margin: 10px;
+	}
+	.as:hover{
+		color: #CC0000;
+		font-size: larger;
+	}
+  #list{width:4200px; height:400px; position:absolute; z-index:1;}
+
+  #list img{float:left;}
+
+  #buttons{position:absolute; height:10px; width:100px; z-index:2; bottom:20px; left:250px;}
+
+  #buttons span{cursor:pointer;/*假超链接样式*/ float:left; border:1px  solid #fff; width:10px;                 height:10px;     border-radius:10px; background:#333; margin-right:5px;}
+
+  #buttons .on{background:orangered;}
+
+  .arrow{cursor:pointer; display:none; line-height:39px; text-align:center; font-size:36px;
+
+        font-weight:bold; width:40px; height:40px;  position:absolute; z-index:2; top:180px;
+
+background-color: RGBA(0,0,0,.3); color:#fff;}
+
+   .arrow:hover{background-color:RGBA(0,0,0,.7);}
+
+   #container:hover .arrow{display:block;}
+
+   #prev{left:20px;}
+
+   #next{right:20px;}
+	 #bottom{
+
+		 	height: 50px;
+		 	width: 100%;
+			background-color: darkslategrey;
+		 	position: fixed;
+		 	bottom: 0;
+
+	 }
+	 </style>
+
+</head>
+
+<body>
+	<div id="top">
+		<table></table>
+		<p>
+			<img src="../static/img/EAlogo.png" style="width: 200px;height:120px">
+		</p>
+	</div>
+	 <!-- <hr id="hr1"/> -->
+	 <div id="left">
+		<br>
+		<a href="user_team/" class="as">立即组建你的球队吧>>></a>
+	 </div>
+	<div id="right">
+		<img src="../static/img/headimg.jpg" width="83" height="83" id="pic">
+{#        http://edu-image.nosdn.127.net/6e66dbdc55464a44889c6a25428b2b4b.png?imageView&quality=100#}
+		<div id="log">
+{#			<p align="center" id="pp">这里显示用户信息并添加button（管理），跳转到用户球队页面</p>#}
+            <p align="center" id="pp">{{ user.name }}</p>
+{#            <center><button onclick="function jump(){location.href='user_team.html'}">hit me</button></center>#}
+            <a href="user/">
+                <center><button name="jump">hit me</button><center>
+            </a>
+
+
+		</div>
+	</div>
+ <div id="container">
+
+   <div id="list" style="left:-750px;">
+
+
+     <img src="../static/img/CRonaldo.jpg" alt="5.pg" style="width: 750px;height:390px" />
+
+     <img src="../static/img/Neymar.jpeg" alt="5.pg" style="width: 750px;height:390px" />
+
+     <img src="../static/img/Messi2.jpg" alt="5.pg" style="width: 750px;height:390px"/>
+
+     <img src="../static/img/CRonaldo.jpg" alt="5.pg" style="width: 750px;height:390px" />
+
+     <img src="../static/img/yibu.jpeg" alt="5.pg" style="width: 750px;height:390px" />
+
+   </div>
+
+   <div id="buttons">
+
+     <span index="1"class="on"> </span>
+
+     <span index="2"></span>
+
+     <span index="3"></span>
+
+     <span index="4"></span>
+
+     <span index="5"></span>
+
+   </div>
+
+   <a href="javascript:;" class="arrow" id="prev">&lt;</a>
+
+   <a href="javascript:;" class="arrow" id="next">&gt;</a>
+
+ </div>
+ <div id="bottom">
+
+ </div>
+
+</body>
+
+</html>
+	</body>
+</html>

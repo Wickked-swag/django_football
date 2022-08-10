@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        #top{
+		    height: 100px;
+		    background-color: darkslategrey;
+        }
+        #bottom{
+		 	height: 50px;
+		 	width: 100%;
+			background-color: darkslategrey;
+		 	position: fixed;
+		 	bottom: 0;
+        }
+        .div_css{
+            width: 180px;
+            border: 3px solid darkslategrey;
+            border-radius: 10px;
+        }
+        .d2,.div_css{
+            margin-top: 20px;
+            margin-left: 20px;
+        }
+        .btn{
+            outline:0;
+            border:0;
+            margin-top:5px;
+            background-color: #417dff;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    {% for player in players %}
+        <div class="div_css">
+           <hr style="height: 1px; background-color: darkslategrey;">
+           <div>name: {{ player.player_name }}</div>
+           <div>nationality: {{ player.nationality }}</div>
+           <div>position: {{ player.position }}</div>
+           <div>overall: {{ player.overall }}</div>
+           <div>age: {{ player.age }}</div>
+           <div>hits: {{ player.hits }}</div>
+           <div>potential: {{ player.potential }}</div>
+           <div>team: {{ player.team }}</div>
+           <div>class: {{ player.classify }}</div>
+            </div>
+    {% endfor %}
+</body>
+</html>
